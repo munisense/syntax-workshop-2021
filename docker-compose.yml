@@ -1,0 +1,9 @@
+version: '3.5'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /opt/project
+    volumes:
+      - .:/opt/project
