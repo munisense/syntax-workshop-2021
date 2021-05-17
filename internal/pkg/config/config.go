@@ -2,7 +2,6 @@ package config
 
 import (
 	"github.com/joho/godotenv"
-	"log"
 	"os"
 	"strconv"
 )
@@ -21,7 +20,7 @@ func LoadConfig() (*Config, error) {
 
 	port, err := strconv.Atoi(os.Getenv("MQ_PORT"))
 	if err != nil {
-		log.Fatal("Invalid MQ_PORT")
+		return nil, err
 	}
 
 	config := &Config{
