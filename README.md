@@ -10,7 +10,7 @@ application to interact with RabbitMQ as our message broker.
 
 ## Note for Windows users
 
-You may need to update the example commands a bit:
+Please use powershell (and not cmd) and change the volume mount as shown below
 
 ```shell
 --volume="${pwd}:/app"
