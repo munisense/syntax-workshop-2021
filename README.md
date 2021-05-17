@@ -1,6 +1,6 @@
 # Syntax Message Queue Workshop 2021
 
-In this workshop we will learn the basic concepts of a Message Queue, and we will learn how to write a small Golang 
+In this workshop we will learn the basic concepts of a Message Queue, and we will learn how to write a small Golang
 application to interact with RabbitMQ as our message broker.
 
 ## Prerequisites to participate
@@ -16,13 +16,13 @@ Please use powershell (and not cmd) and change the volume mount as shown below
 --volume="${pwd}:/app"
 ```
 
-instead of: 
+instead of:
 
 ```shell
 --volume="$PWD:/app"
 ```
 
-## Step 1 - get a single message from a queue
+## Step 1 - get a single message from a shared queue
 
 Lets get a message from a queue!
 
@@ -32,7 +32,7 @@ This application will try to get a single message from a queue called "results".
 docker run --rm -it --volume="$PWD:/app" -w /app golang:1-alpine go run cmd/step1/main.go
 ```
 
-## Step 2 - consume messages from a queue
+## Step 2 - consume messages from a shared queue
 
 We can do better than polling for every single message. Let's consume from a queue instead.
 
@@ -40,9 +40,22 @@ We can do better than polling for every single message. Let's consume from a que
 docker run --rm -it --volume="$PWD:/app" -w /app golang:1-alpine go run cmd/step2/main.go
 ```
 
+## Step 3 - create your own exclusive queue
+
+No more shared queue, we want to receive all messages.
+
+This program will create an exclusive queue and bind it to the exchange called "results" with routing key "#".
+
+The routing key determines what messages your queue will receive, a # means all messages.
+
+```shell
+docker run --rm -it --volume="$PWD:/app" -w /app golang:1-alpine go run cmd/step3/main.go
+```
+
 ### Links
+
 - https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/go/receive.go
-- https://www.rabbitmq.com/tutorials/amqp-concepts.html  
+- https://www.rabbitmq.com/tutorials/amqp-concepts.html
 - https://www.rabbitmq.com/tutorials/tutorial-one-go.html
 - https://www.rabbitmq.com/getstarted.html
 - https://www.rabbitmq.com/amqp-0-9-1-reference.html
