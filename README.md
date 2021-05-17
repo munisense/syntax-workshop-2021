@@ -52,6 +52,15 @@ The routing key determines what messages your queue will receive, a # means all 
 docker run --rm -it --volume="$PWD:/app" -w /app golang:1-alpine go run cmd/step3/main.go
 ```
 
+## Step 4 - create your own exclusive queue and only receive a specific set of messages
+
+Up until now we have been receiving all messages. In this final example we will use the routing key to tell RabbitMQ we
+only want to receive LAeq messages.
+
+```shell
+docker run --rm -it --volume="$PWD:/app" -w /app golang:1-alpine go run cmd/step4/main.go
+```
+
 ### Links
 
 - https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/go/receive.go
