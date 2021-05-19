@@ -54,11 +54,21 @@ docker run --rm -it --volume="$PWD:/app" -w /app golang:1-alpine go run cmd/step
 
 ## Step 4 - create your own exclusive queue and only receive a specific set of messages
 
-Up until now we have been receiving all messages. In this final example we will use the routing key to tell RabbitMQ we
+Up until now we have been receiving all messages. In this example we will use the routing key to tell RabbitMQ we
 only want to receive LAeq messages.
 
 ```shell
 docker run --rm -it --volume="$PWD:/app" -w /app golang:1-alpine go run cmd/step4/main.go
+```
+
+## Step 5 - publish something to the exchange
+
+But what it you want to send data to the queue? That goes through an exchange! We will publish something to the results
+exchange and then use the code from step 4 to receive this message! Note that if you don't use a routing key (like step 2)
+you will receive these messages mixed with our prepared messages.
+
+```shell
+docker run --rm -it --volume="$PWD:/app" -w /app golang:1-alpine go run cmd/step5/main.go
 ```
 
 ### Links
